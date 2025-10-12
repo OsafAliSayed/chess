@@ -1,0 +1,15 @@
+# Environment Variables
+.env
+.venv
+
+# Python version files
+.python-version
+
+# caches
+__pycache__/
+__pycache__/*
+
+# Local DB
+db.sqlite3
+
+
