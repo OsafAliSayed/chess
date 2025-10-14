@@ -3,3 +3,4 @@ channels==4.3.1
 Django==5.2.7
 sqlparse==0.5.3
 daphne==4.2.1
+chess==1.11.2
