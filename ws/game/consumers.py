@@ -64,12 +64,6 @@ class GameConsumer(WebsocketConsumer):
                 return
             
     
-            # check if it is already mate
-            if game.board.is_game_over():
-                game.player1.send(json.dumps({
-                    "type": "result",
-                    "result": game.board.result()
-                }))
             move = chess.Move.from_uci(data["move"])
 
             # reject illegal move
@@ -82,6 +76,19 @@ class GameConsumer(WebsocketConsumer):
             # update the board
             game.board.push(move)
 
+            # check if it is already mate
+            if game.board.is_game_over():
+                game.player1.send(json.dumps({
+                    "type": "result",
+                    "result": game.board.result()
+                }))
+
+                game.player2.send(json.dumps({
+                    "type": "result",
+                    "result": game.board.result()
+                }))
+
+                return
             # send the move to other party
 
             opposition = game.player2 if self == game.player1 else game.player1
