@@ -1,6 +1,5 @@
 import chess
 import json
-from channels.layers import get_channel_layer
 from channels.generic.websocket import WebsocketConsumer
 
 
@@ -16,13 +15,17 @@ class Game():
     def __init__(self, player1: WebsocketConsumer, player2: WebsocketConsumer):
         self.player1 = player1
         self.player2 = player2
-        # self.Board = chess.Board()
+        self.board = chess.Board()
         self.moves = []
 
-        # send message to player 1
-        init_msg = json.dumps({
-            "message": "Game Initialized"
-        })
 
-        self.player1.send(init_msg)
-        self.player2.send(init_msg)
+        # send message to both players with their colors
+        self.player1.send(json.dumps({
+            "message": "Game Initialized",
+            "color": "white"
+        }))
+        self.player2.send(json.dumps({
+            "message": "Game Initialized",
+            "color": "black"
+        }))
+

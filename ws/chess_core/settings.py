@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'chess.urls'
+ROOT_URLCONF = 'chess_core.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'chess.wsgi.application'
+WSGI_APPLICATION = 'chess_core.wsgi.application'
 
 
 # Database
@@ -133,4 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # mysite/settings.py
-ASGI_APPLICATION = "chess.asgi.application"
+ASGI_APPLICATION = "chess_core.asgi.application"
